@@ -7,6 +7,16 @@
 
 import UIKit
 
-class SplashViewModel: NSObject {
-
+class SplashViewModel {
+    var onNavigateToMainScreen:(()-> Void)?
+    
+    func startTimer(){
+        DispatchQueue.main.asyncAfter(deadline: .now() + 3){
+            self.navigateToMainScreen()
+        }
+    }
+    
+    private func navigateToMainScreen(){
+        onNavigateToMainScreen?()
+    }
 }
